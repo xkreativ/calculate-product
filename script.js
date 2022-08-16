@@ -27,8 +27,7 @@ add.addEventListener('click', function () {
 
 // Создаём ячейку таблицы
 function createCell(tr, value, name) {
-    let td;
-    td = document.createElement('td');
+    let td = document.createElement('td');
     td.textContent = value;
     td.classList.add(name);
     tr.appendChild(td);
@@ -42,7 +41,7 @@ function recountTotal() {
     if (costs) {
         let count = 0;
         for (let i = 0; i < costs.length; i++) {
-            count += Number(costs[i].textContent);
+            count += +costs[i].textContent;
         }
         total.textContent = count
     }
@@ -68,7 +67,7 @@ function allowEdit(td) {
                     let parent = td.parentElement;
                     let price = parent.querySelector('.price');
                     let amount = parent.querySelector('.amount');
-                    parent.querySelector('.cost').textContent = Number(price.textContent) * Number(price.textContent);
+                    parent.querySelector('.cost').textContent = price.textContent * amount.textContent;
                     recountTotal(); // пересчитаем общую сумму
                 }
             }
